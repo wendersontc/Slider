@@ -1,15 +1,21 @@
 angular
 .module('app')
 .controller('SliderController', ['$scope', 'Files', function($scope, Files) {
-    //$scope.images=[{src:'img1.png',title:'Pic 1'},{src:'img2.jpg',title:'Pic 2'},{src:'img3.jpg',title:'Pic 3'},{src:'img4.png',title:'Pic 4'},{src:'img5.png',title:'Pic 5'}]; 
+    $scope.images=[{src:'img1.png',title:'Pic 1'},{src:'img2.jpg',title:'Pic 2'},{src:'img3.jpg',title:'Pic 3'},{src:'img4.png',title:'Pic 4'},{src:'img5.png',title:'Pic 5'}]; 
     
-    $scope.slides = Files.find().$promise.then(function(results) {
-    	
-    	$scope.teste = results;
-    	$scope.images = results;
+    /*var filter = {
+        "filter": {
+          "where": {
+            "modelsliderIdmodel": 2
+          }
+        }
+    };*/
 
-    	console.log($scope.teste);
-    	console.log($scope.images);
+
+    $scope.slides = Files.find( {"filter": {"where": {"modelsliderIdmodel": localStorage.getItem('idmodel')}}}).$promise.then(function(results) {
+    	console.log(results);
+    	$scope.teste1 = JSON.stringify(results);
+    	$scope.images = JSON.parse($scope.teste1);
     	
     });   
 
@@ -36,13 +42,12 @@ angular
 		
 		scope.$watch('currentIndex',function(){
 			scope.images.forEach(function(image){
-				console.log(scope.currentIndex);
 				image.visible=false;
-                //console.log(scope.images);
 			});
-			//console.log(scope.images[scope.currentIndex]);
+			console.log(scope.images[scope.currentIndex]);
+			console.log(scope.images[scope.currentIndex].tempo);
 			
-			scope.time = 10000;
+			scope.time = (scope.images[scope.currentIndex].tempo * 1000);
 
 			//sliderFunc();
             timer=$timeout(scope.time);

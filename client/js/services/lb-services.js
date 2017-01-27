@@ -62,6 +62,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
           { 'id': '@id' },
           {
 
+            // INTERNAL. Use Files.modelslider() instead.
+            "prototype$__get__modelslider": {
+              url: urlBase + "/Files/:id/modelslider",
+              method: "GET",
+            },
+
             /**
              * @ngdoc method
              * @name lbServices.Files#create
@@ -595,6 +601,65 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
               url: urlBase + "/Files/change-stream",
               method: "POST",
             },
+
+            // INTERNAL. Use Modelslider.files.findById() instead.
+            "::findById::Modelslider::files": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/Modelsliders/:id/files/:fk",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Modelslider.files.destroyById() instead.
+            "::destroyById::Modelslider::files": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/Modelsliders/:id/files/:fk",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use Modelslider.files.updateById() instead.
+            "::updateById::Modelslider::files": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/Modelsliders/:id/files/:fk",
+              method: "PUT",
+            },
+
+            // INTERNAL. Use Modelslider.files() instead.
+            "::get::Modelslider::files": {
+              isArray: true,
+              url: urlBase + "/Modelsliders/:id/files",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Modelslider.files.create() instead.
+            "::create::Modelslider::files": {
+              url: urlBase + "/Modelsliders/:id/files",
+              method: "POST",
+            },
+
+            // INTERNAL. Use Modelslider.files.createMany() instead.
+            "::createMany::Modelslider::files": {
+              isArray: true,
+              url: urlBase + "/Modelsliders/:id/files",
+              method: "POST",
+            },
+
+            // INTERNAL. Use Modelslider.files.destroyAll() instead.
+            "::delete::Modelslider::files": {
+              url: urlBase + "/Modelsliders/:id/files",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use Modelslider.files.count() instead.
+            "::count::Modelslider::files": {
+              url: urlBase + "/Modelsliders/:id/files/count",
+              method: "GET",
+            },
           }
         );
 
@@ -841,6 +906,42 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
         R.modelName = "Files";
 
 
+            /**
+             * @ngdoc method
+             * @name lbServices.Files#modelslider
+             * @methodOf lbServices.Files
+             *
+             * @description
+             *
+             * Fetches belongsTo relation modelslider.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Files id
+             *
+             *  - `refresh` – `{boolean=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Modelslider` object.)
+             * </em>
+             */
+        R.modelslider = function() {
+          var TargetResource = $injector.get("Modelslider");
+          var action = TargetResource["::get::Files::modelslider"];
+          return action.apply(R, arguments);
+        };
+
 
         return R;
       }]);
@@ -871,6 +972,58 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
         urlBase + "/Modelsliders/:id",
           { 'id': '@id' },
           {
+
+            // INTERNAL. Use Modelslider.files.findById() instead.
+            "prototype$__findById__files": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/Modelsliders/:id/files/:fk",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Modelslider.files.destroyById() instead.
+            "prototype$__destroyById__files": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/Modelsliders/:id/files/:fk",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use Modelslider.files.updateById() instead.
+            "prototype$__updateById__files": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/Modelsliders/:id/files/:fk",
+              method: "PUT",
+            },
+
+            // INTERNAL. Use Modelslider.files() instead.
+            "prototype$__get__files": {
+              isArray: true,
+              url: urlBase + "/Modelsliders/:id/files",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Modelslider.files.create() instead.
+            "prototype$__create__files": {
+              url: urlBase + "/Modelsliders/:id/files",
+              method: "POST",
+            },
+
+            // INTERNAL. Use Modelslider.files.destroyAll() instead.
+            "prototype$__delete__files": {
+              url: urlBase + "/Modelsliders/:id/files",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use Modelslider.files.count() instead.
+            "prototype$__count__files": {
+              url: urlBase + "/Modelsliders/:id/files/count",
+              method: "GET",
+            },
 
             /**
              * @ngdoc method
@@ -1405,6 +1558,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
               url: urlBase + "/Modelsliders/change-stream",
               method: "POST",
             },
+
+            // INTERNAL. Use Files.modelslider() instead.
+            "::get::Files::modelslider": {
+              url: urlBase + "/Files/:id/modelslider",
+              method: "GET",
+            },
           }
         );
 
@@ -1650,6 +1809,309 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
         */
         R.modelName = "Modelslider";
 
+    /**
+     * @ngdoc object
+     * @name lbServices.Modelslider.files
+     * @header lbServices.Modelslider.files
+     * @object
+     * @description
+     *
+     * The object `Modelslider.files` groups methods
+     * manipulating `Files` instances related to `Modelslider`.
+     *
+     * Call {@link lbServices.Modelslider#files Modelslider.files()}
+     * to query all related instances.
+     */
+
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Modelslider#files
+             * @methodOf lbServices.Modelslider
+             *
+             * @description
+             *
+             * Queries files of Modelslider.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Modelslider id
+             *
+             *  - `filter` – `{object=}` -
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Files` object.)
+             * </em>
+             */
+        R.files = function() {
+          var TargetResource = $injector.get("Files");
+          var action = TargetResource["::get::Modelslider::files"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Modelslider.files#count
+             * @methodOf lbServices.Modelslider.files
+             *
+             * @description
+             *
+             * Counts files of Modelslider.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Modelslider id
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `count` – `{number=}` -
+             */
+        R.files.count = function() {
+          var TargetResource = $injector.get("Files");
+          var action = TargetResource["::count::Modelslider::files"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Modelslider.files#create
+             * @methodOf lbServices.Modelslider.files
+             *
+             * @description
+             *
+             * Creates a new instance in files of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Modelslider id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Files` object.)
+             * </em>
+             */
+        R.files.create = function() {
+          var TargetResource = $injector.get("Files");
+          var action = TargetResource["::create::Modelslider::files"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Modelslider.files#createMany
+             * @methodOf lbServices.Modelslider.files
+             *
+             * @description
+             *
+             * Creates a new instance in files of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Modelslider id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Files` object.)
+             * </em>
+             */
+        R.files.createMany = function() {
+          var TargetResource = $injector.get("Files");
+          var action = TargetResource["::createMany::Modelslider::files"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Modelslider.files#destroyAll
+             * @methodOf lbServices.Modelslider.files
+             *
+             * @description
+             *
+             * Deletes all files of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Modelslider id
+             *
+             *  - `where` – `{object=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * This method returns no data.
+             */
+        R.files.destroyAll = function() {
+          var TargetResource = $injector.get("Files");
+          var action = TargetResource["::delete::Modelslider::files"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Modelslider.files#destroyById
+             * @methodOf lbServices.Modelslider.files
+             *
+             * @description
+             *
+             * Delete a related item by id for files.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Modelslider id
+             *
+             *  - `fk` – `{*}` - Foreign key for files
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * This method returns no data.
+             */
+        R.files.destroyById = function() {
+          var TargetResource = $injector.get("Files");
+          var action = TargetResource["::destroyById::Modelslider::files"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Modelslider.files#findById
+             * @methodOf lbServices.Modelslider.files
+             *
+             * @description
+             *
+             * Find a related item by id for files.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Modelslider id
+             *
+             *  - `fk` – `{*}` - Foreign key for files
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Files` object.)
+             * </em>
+             */
+        R.files.findById = function() {
+          var TargetResource = $injector.get("Files");
+          var action = TargetResource["::findById::Modelslider::files"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Modelslider.files#updateById
+             * @methodOf lbServices.Modelslider.files
+             *
+             * @description
+             *
+             * Update a related item by id for files.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Modelslider id
+             *
+             *  - `fk` – `{*}` - Foreign key for files
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Files` object.)
+             * </em>
+             */
+        R.files.updateById = function() {
+          var TargetResource = $injector.get("Files");
+          var action = TargetResource["::updateById::Modelslider::files"];
+          return action.apply(R, arguments);
+        };
 
 
         return R;

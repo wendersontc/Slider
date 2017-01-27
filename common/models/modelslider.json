@@ -45,7 +45,13 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "files": {
+      "type": "hasMany",
+      "model": "Files",
+      "foreignKey": "modelsliderIdmodel"
+    }
+  },
   "acls": [],
   "methods": {}
 }

@@ -1,0 +1,215 @@
+.bg-tef-blue {
+    background: #455a64 !important
+}
+.menu.accordion-menu>li>a:hover {
+    color: #455a64 !important
+}
+.sidebar-admin .menu.accordion-menu ul li a:hover {
+    color: #455a64 !important
+}
+.menu-hover-custom:hover {
+    color: #455a64 !important
+}
+.page-inner.page-admin .page-title h1 {
+    color: #455a64 !important
+}
+.btn-block {
+    background: #607d8b !important
+}
+.btn-primary {
+    background: #969696 !important
+}
+.modal-footer .btn-default {
+    color: #455a64 !important;
+    padding: 6px 30px !important;
+    border: 1px solid #455a64 !important
+}
+.modal-footer .btn-default:hover {
+    background: #fff !important
+}
+.modal-footer .btn-success {
+    color: #fff !important;
+    padding: 6px 30px !important
+}
+.btn-tef-orange-not-bg {
+    color: #455a64 !important;
+    border: 1px solid #455a64 !important
+}
+.btn-tef-blue {
+    background: #455a64 !important
+}
+.btn-tef-blue-not-bg {
+    color: #455a64 !important;
+    border: 1px solid #455a64 !important
+}
+.btn-tef-orange {
+    background: #455a64 !important
+}
+.ativo.btn-tef-orange {
+    border: 1px solid #455a64 !important
+}
+.ativo {
+    background: #455a64 !important;
+    border: 1px solid #455a64 !important
+}
+.active-custom {
+    background: #455a64 !important;
+    border: 1px solid #455a64 !important;
+    color: #fff !important
+}
+.btn-tef-green-not-bg {
+    color: #455a64 !important;
+    border-color: #455a64 !important
+}
+.btn-tef-green {
+    background: #455a64 !important
+}
+.inputfile-2+label {
+    background: #455a64 !important
+}
+.page-admin .pagination>.active>a,
+.pagination>.active>a:focus,
+.pagination>.active>a:hover,
+.pagination>.active>span,
+.pagination>.active>span:focus,
+.pagination>.active>span:hover {
+    background: #455a64 !important;
+    border-color: #455a64 !important
+}
+.page-footer .page-footer-header {
+    background: #455a64 !important
+}
+.text-tef-warning-10 {
+    color: #455a64 !important
+}
+.page-title h1 {
+    color: #455a64 !important
+}
+.page-title h3 {
+    color: #455a64 !important
+}
+.user-name {
+    color: #455a64 !important
+}
+.panel-default-20>.panel-heading {
+    background: #455a64 !important
+}
+.panel-default-10>.panel-heading {
+    background: #607d8b !important
+}
+.page-comerciante .pagination>.active>span {
+    background: #455a64 !important;
+    border-color: #455a64 !important
+}
+.page-admin .pagination>.active>a,
+.pagination>.active>a:focus,
+.pagination>.active>a:hover,
+.pagination>.active>span,
+.pagination>.active>span:focus,
+.pagination>.active>span:hover {
+    background: #455a64 !important;
+    border-color: #455a64 !important
+}
+.page-footer .page-footer-footer {
+    background: #607d8b !important
+}
+.faq {
+    color: #455a64 !important
+}
+.faq:hover {
+    color: #607d8b !important
+}
+.faq-second {
+    color: #607d8b !important
+}
+.faq-second:hover {
+    color: #607d8b !important
+}
+.color-primary {
+    color: #455a64 !important
+}
+.background-primary {
+    background: #455a64 !important
+}
+.background-second {
+    background: #607d8b !important
+}
+.text-black {
+    color: #4e5e6a !important
+}
+.text-white {
+    color: #fff !important
+}
+.logo {
+    background-image: url("/images/logo.png") !important
+}
+.logo-pequena {
+    background-image: url("/images/logo-pequena.png") !important
+}
+.btn-success {
+    background: #455a64 !important
+}
+.progress-bar {
+    background: #455a64 !important
+}
+.active-progress-bar {
+    background: #455a64 !important
+}
+input.radio:empty ~ .radio-style-type.active:before {
+    background: #455a64 !important
+}
+.option-radio input.radio2:checked ~ label:before {
+    background: #455a64 !important
+}
+.active>h3 {
+    color: #455a64 !important
+}
+.active .line {
+    border-bottom: 2px solid #455a64 !important
+}
+.label-plano {
+    border: 1px solid #d0cfcf;
+    box-shadow: 1px 1px 7px 1px #c3c3c3
+}
+input.radio:empty ~ .radio-style-type:before {
+    border: 1px solid #ddd
+}
+.hover-add-plane {
+    border: 2px solid #fff !important
+}
+.hover-add-plane:hover {
+    border: 2px solid #607d8b !important;
+    border-top-color: #fff !important
+}
+.background-second-plano {
+    background: #607d8b !important;
+    border: 2px solid #607d8b !important
+}
+.background-second-plano:hover {
+    border: 2px solid #607d8b !important
+}
+.button-file-pdv {
+    background: #455a64 !important;
+    color: #fff !important
+}
+.status-success {
+    background: #8bc34a !important
+}
+.status-warning {
+    background: #ffeb3b !important
+}
+.status-danger {
+    background: #F44336 !important
+}
+.status-info {
+    background: #1976d2 !important
+}
+.status-default {
+    background: #757573 !important
+}
+.status {
+    font-size: 12px !important
+}
+.bg-green{
+    background-color: #367A47;
+}

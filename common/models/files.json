@@ -109,7 +109,13 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "modelslider": {
+      "type": "belongsTo",
+      "model": "Modelslider",
+      "foreignKey": "modelsliderIdmodel"
+    }
+  },
   "acls": [],
   "methods": {}
 }
