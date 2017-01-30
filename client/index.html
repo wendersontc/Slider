@@ -16,18 +16,19 @@
       
       <div class="navbar horizontal-bar">
         <div class="navbar-inner container">
-              <div class="logo-box">
-                <a id="hrefDashboard" href="#/dashboard" class="logo-text">
-                  <span><img src="/view/slide/files/transire.png" alt=""></span>
-                </a>
-              </div>
-              <div class="row">
-                 <div class="col-xs-12 pull-left">
-                     <a class="btn btn-tef-green-not-bg pull-left m-r-sm ng-binding" href="#/plan">Login</a>
-                 </div>
-              </div>       
+         <div class="row">
+          <div class="col-xs-12">
+            <div class="logo-box">
+              <a id="hrefDashboard" href="#/dashboard" class="logo-text">
+                <span><img src="/view/slide/files/transire.png" alt=""></span>
+              </a>
+            </div>
+            <a class="btn btn-tef-green-not-bg pull-left m-r-sm ng-binding" href="view/slide/novo.html">Novo</a>
+          </div> 
         </div>
-      </div>
+      </div>      
+    </div>
+  </div>
                      
 
 <div class="page-footer-footer page-sidebar sidebar sidebar-admin horizontal-bar">
@@ -49,7 +50,7 @@
           <table id="" class="table table-bordered table-striped">
             <tbody>
               <tr class="bg-light">
-                <th class="col-xs-1 text-center"></th>
+                <th class="col-md-1 text-center"></th>
                 <th class="col-xs-2 text-center">Modelo</th>
 
               </tr>
@@ -57,7 +58,6 @@
               <tr ng-repeat="m in modelos" data-id="{{m.idmodel}}">
               <td class="text-center"><strong><input type="radio" id="{{m.idmodel}}" ng-model='modelo.name' ng-value="{{m.idmodel}}" name="modelo">{{ m.idmodel }}</strong></td>
                 <td class="text-center">{{ m.nameSlider }}</td>
-                <div>You chose {{modelo | json}}</div>
               </tr>
             </tbody>
           </table>
@@ -69,7 +69,6 @@
   <center><button class="btn btn-tef-green-not-bg m-r-sm ng-binding" ng-click="selectInput(modelo)">Apresentar na tv</button></center>
 </div> 
 </form>
-
 
 
     <!--  <h1>Modelos</h1>

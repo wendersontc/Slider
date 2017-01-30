@@ -5,6 +5,9 @@ var boot = require('loopback-boot');
 
 var app = module.exports = loopback();
 
+var frameguard = require('frameguard');
+app.middleware('routes:before', frameguard({action:'sameorigin'}));
+
 app.start = function() {
   // start the web server
   return app.listen(function() {

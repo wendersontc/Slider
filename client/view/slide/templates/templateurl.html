@@ -1,6 +1,7 @@
 <div class="slider">
 	<div class="slide" ng-repeat="image in images" ng-show="image.visible">
-		<img id="footer" ng-src="{{image.content}}"/>
+		<img ng-show="image.url == ''" id="footer" ng-src="{{image.content}}"/>
+		<iframe ng-show="image.content == ''" id="footer" class="dfframe"  ng-src="http://192.168.100.6:3000"></iframe>
 	</div>
 	
 </div>
