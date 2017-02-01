@@ -33,7 +33,7 @@
                     </ul>
                 </div>
             </div>
-            <form ng-controller="ModelSliderController">
+            <form ng-controller="ModelSliderController as up" name="up.upload_form">
                 <div id="main-wrapper" class="container">
                     <div class="panel panel-default">
                         <div class="panel-body">
@@ -43,7 +43,7 @@
                                         Files
                                     </h2>
                                     <div class="row">
-                                      <form name="formComp" id="formComp" novalidate ng-submit="save(formComp)" >
+                                      <form name="formComp">
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="agency">
@@ -74,7 +74,7 @@
                                                             *
                                                         </span>
                                                     </label>
-                                                    <select class="form-control" ng-model="partners[partner.count].type" name="teltype0"
+                                                    <select class="form-control" ng-model="up.partners[partner.count].type" name="teltype0"
                                                     id="teltype0" ng-change="clearPhone(0)" required ng-options="xx.value as xx.name for xx in telTypes">
                                                         <option value="">
                                                             Tipo
@@ -87,7 +87,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div ng-show="partners[partner.count].type == 2" class="col-md-4">
+                                            <div ng-show="up.partners[partner.count].type == 2" class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="agency">
                                                         URL
@@ -95,7 +95,7 @@
                                                             *
                                                         </span>
                                                     </label>
-                                                    <input type="text" class="form-control" ng-model="partners[partner.count].url"
+                                                    <input type="text" class="form-control" ng-model="up.partners[partner.count].url"
                                                     name="EndModel0" id="EndModel0" required placeholder="URL">
                                                     <div ng-show="formComp.$submitted || formComp.EndModel0.$touched" class="help-block text-danger">
                                                         <span ng-show="formComp.EndModel0.$error.required">
@@ -107,7 +107,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div ng-show="partners[partner.count].type == 1" class="col-md-4">
+                                            <div ng-show="up.partners[partner.count].type == 1" class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="agency">
                                                         FILE
@@ -115,16 +115,17 @@
                                                             *
                                                         </span>
                                                     </label>
-                                                    <input type="file" class="form-control" ng-model="partners[partner.count].arquivo"
-                                                    name="FileModel0" id="FileModel0" required placeholder="FILE">
-                                                    <div ng-show="formComp.$submitted || formComp.FileModel0.$touched" class="help-block text-danger">
-                                                        <span ng-show="formComp.FileModel0.$error.required">
-                                                            ERRO
-                                                        </span>
-                                                        <span ng-show="formComp.FileModel0.$error.pattern">
-                                                            ERRO 2
-                                                        </span>
-                                                    </div>
+                                                    <input 
+                                                    type="file" 
+                                                    ngf-select 
+                                                    ng-model="up.partners[partner.count].arquivo" 
+                                                    name="file" 
+                                                    ngf-pattern="'image/*'"
+                                                    accept="image/*" 
+                                                    ngf-max-size="20MB" 
+                                                    />
+                                                    
+                                                    
                                                 </div>
                                             </div>
                                             <div class="col-md-2">
@@ -135,7 +136,7 @@
                                                             *
                                                         </span>
                                                     </label>
-                                                    <input type="text" class="form-control phone" required ng-model="partners[partner.count].tempo"
+                                                    <input type="text" class="form-control phone" required ng-model="up.partners[partner.count].tempo"
                                                     name="phoneNumber0" id="phoneNumber0" autocomplete="off" placeholder="Tempo">
                                                     <div ng-show="formComp.$submitted || formComp.phoneNumber0.$touched" class="help-block text-danger">
                                                         <span ng-show="formComp.phoneNumber0.$error.required">
@@ -154,11 +155,7 @@
                                                 </button>
                                             </div>
                                         </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-12">
+                                        <div class="col-xs-12">
                                 <div class="row">
                                     <div class="col-md-2">
                                     </div>
@@ -180,7 +177,7 @@
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                            <button class="btn btn-tef-green-not-bg m-r-sm ng-binding" ng-click="save(formComp)">
+                                            <button  type="submit" class="btn btn-tef-green-not-bg m-r-sm" ng-click="save()">
                                                 Cadastrar
                                             </button>
                                         </div>
@@ -188,6 +185,11 @@
 
                                 </div>
                             </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            
                         </div>
                         <!--<center><button class="btn btn-tef-green-not-bg m-r-sm ng-binding" ng-click="selectInput(modelo)">Cadastrar</button></center> -->
                     </div>
@@ -204,6 +206,9 @@
             </script>
             <script src="../../js/controllers/modelslider.js">
             </script>
+            <script type="text/javascript" src="../../vendor/angular/angular.min.js"></script>
+            <script type="text/javascript" src="../../vendor/ng-file-upload/dist/ng-file-upload.min.js"></script>
+            <script type="text/javascript" src="../../vendor/ng-file-upload/dist/ng-file-upload-shim.min.js"></script>
     </body>
 
 </html>

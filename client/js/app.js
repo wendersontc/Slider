@@ -2,7 +2,8 @@ angular
   .module('app', [
     'ui.router',
     'lbServices',
-    'ngResource'
+    'ngResource',
+    'ngFileUpload'
   ]).config(['$stateProvider', '$urlRouterProvider', function($stateProvider,
       $urlRouterProvider) {
     

@@ -1,7 +1,8 @@
 angular
   .module('app')
-  .controller('ModelSliderController', ['$scope', 'Modelslider', 'Files', '$location',
-      function($scope, Modelslider,Files,$location) {
+  .controller('ModelSliderController', ['$scope', 'Modelslider', 'Files', '$location', 'Upload', '$window',
+      function($scope, Modelslider,Files,$location,Upload,$window) {
+      $scope.file = '';
       $scope.modelo = {};
       $scope.form = {};
       $scope.insert = {};
@@ -53,28 +54,49 @@ angular
           var data = {
             "idmodel": 0,
             "nameSlider": $scope.form.name
-          } 
+          }
           Modelslider.create(data, function (retorno) {
               console.log(retorno);
               $scope.insert = retorno;
 
               var data = {};
-              for (var k in $scope.partners) {
-                console.log($scope.partners[k].type);
+              for (var k in $scope.up.partners) {
+                 
+                if($scope.up.partners[k].arquivo){
+                 Upload.upload({
+                  url: 'http://localhost:8000/upload', 
+                  data:{file:$scope.up.partners[k].arquivo} 
+                }).then(function (resp) { 
+                  console.log(resp);
+                  if(resp.data.error_code === 0){ 
+                    $window.alert('Success ' + resp.config.data.file.name + 'uploaded. Response: ');
+                  } else {
+                    $window.alert('an error occured');
+                  }
+                }, function (resp) { 
+                  console.log('Error status: ' + resp.status);
+                  $window.alert('Error status: ' + resp.status);
+                }, function (evt) { 
+                  console.log(evt);
+          //var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+          //console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+            //vm.progress = 'progress: ' + progressPercentage + '% '; // capture upload progress
+          });
+              }
+                 
                 data = {
                  "idfiles": 0,
-                 "type": $scope.partners[k].type,
-                 "content": $scope.partners[k].arquivo,
-                 "url": $scope.partners[k].url,
-                 "tempo": $scope.partners[k].tempo,
+                 "type": $scope.up.partners[k].type,
+                 "content": 'file/'+$scope.up.partners[k].arquivo.name,
+                 "url": $scope.up.partners[k].url,
+                 "tempo": $scope.up.partners[k].tempo,
                  "modelsliderIdmodel": $scope.insert.idmodel
                }
                Files.create(data, function (retorno) {
-                console.log('ret ' + JSON.stringify(retorno));
-                 location.reload();
+                 console.log('ret ' + JSON.stringify(retorno));
               });
              }
-             
+             //location.reload();
              console.log('afff' + JSON.stringify(data));
 
           });  
@@ -97,16 +119,16 @@ angular
               console.log(retorno);
           });*/
 
-          if(($scope.form.name == null || $scope.form.name == '') ){
+        /*  if(($scope.form.name == null || $scope.form.name == '') ){
              //Message.CUSTOM($filter('translate')('form.validationMessage.remoteSeg'), "error");
           }else{
              //Message.CUSTOM($filter('translate')('form.validationMessage.remoteSeg'), "error");
              for (var k =0; k<=$scope.partners.length; k++) {
                 console.log($scope.partners[i].type);
              }
-          }
-
-       };
+          }*/
+         
+    };
 
       $scope.slides = Modelslider.find().$promise.then(function(results) {
       	  console.log(results);
