@@ -50,7 +50,7 @@ angular
 			scope.time = (scope.images[scope.currentIndex].tempo * 1000);
 
 			//sliderFunc();
-            timer=$timeout(scope.time);
+           // timer=$timeout(scope.time);
 
 			timer=$timeout(function(){
 				scope.next();

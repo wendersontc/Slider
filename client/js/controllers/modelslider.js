@@ -2,7 +2,6 @@ angular
     .module('app')
     .controller('ModelSliderController', ['$scope', 'Modelslider', 'Files', '$location', 'Upload', '$window',
         function($scope, Modelslider, Files, $location, Upload, $window) {
-            
             $scope.file = '';
             $scope.modelo = {};
             $scope.form = {};
@@ -19,7 +18,7 @@ angular
               category: $scope.form.category,
               plan: $scope.plan,
               type: 'save'
-            } */
+          } */
             $scope.partners = {};
             $scope.countPartners = 0;
             $scope.partners[0] = {
@@ -51,13 +50,14 @@ angular
                 $scope.countPartners++;
             };
 
-            $scope.removePartners = function(i){
-               delete $scope.partners[i];
-               $('[data-part-row="' + i + '"').remove();
+            $scope.removePartners = function(i) {
+                delete $scope.partners[i];
+                $('[data-part-row="' + i + '"').remove();
             };
 
             $scope.selectInput = function(mo) {
-                if(mo.name > 0){
+                //alert(mo.name);
+                if (mo.name > 0) {
                     localStorage.setItem('idmodel', mo.name);
                     window.location.href = "/view/slide/";
                 }
@@ -70,23 +70,56 @@ angular
                     "nameSlider": $scope.form.name
                 }
                 Modelslider.create(data, function(retorno) {
-                    console.log(retorno);
+                    //console.log(retorno);
                     $scope.insert = retorno;
 
-                    var data = {};
-                    for (var k in $scope.up.partners) {
+                    var dataFiles = [];
 
-                        if ($scope.up.partners[k].arquivo) {
-                            $scope.file = 'files/' + $scope.up.partners[k].arquivo.name;
+                    function imgFor(index, data) {
+
+
+                        if (data[index].arquivo) {
+                            //$scope.file = 'files/' + data[index].arquivo.name;
                             Upload.upload({
-                                url: 'http://192.168.100.160:4000/upload',
+                                url: 'http://192.168.100.6:4000/upload',
                                 data: {
-                                    file: $scope.up.partners[k].arquivo
+                                    file: data[index].arquivo
                                 }
                             }).then(function(resp) {
+                                
                                 console.log(resp);
                                 if (resp.data.error_code === 0) {
+
+                                    console.log(resp);
+                                    dataFiles.push({
+                                       "idfiles": 0,
+                                        "type": data[index].type,
+                                        "content": /*$scope.file*/ 'files/'+resp.data.arquivo.filename,
+                                        "url": data[index].url,
+                                       "tempo": data[index].tempo,
+                                        "modelsliderIdmodel": $scope.insert.idmodel,
+                                        "url": ""
+                                    });   
+
+
                                     //$window.alert('Success ' + resp.config.data.file.name + 'uploaded. Response: ');
+
+
+
+                                    if (Object.keys(data).length > 0 && index < (Object.keys(data).length - 1)) {
+
+                                        index = index + 1;
+                                        imgFor(index, data);
+
+                                    } else {
+                                        if (dataFiles.length > 0) {
+                                            saveFile(0, dataFiles);                                            
+
+                                        }
+
+                                    }
+
+
                                 } else {
                                     $window.alert('Ocorreu um erro inesperado!');
                                 }
@@ -96,24 +129,93 @@ angular
                             }, function(evt) {
                                 console.log(evt);
                             });
+                        }else{
+
+                            dataFiles.push({
+                                "idfiles": 0,
+                                "type": data[index].type,
+                                "content": '',
+                                "url": data[index].url,
+                                "tempo": data[index].tempo,
+                                "modelsliderIdmodel": $scope.insert.idmodel
+                            });
+
+                            saveFile(0, dataFiles);
                         }
-                        console.log($scope);
-                        data = {
-                            "idfiles": 0,
-                            "type": $scope.up.partners[k].type,
-                            "content": $scope.file,
-                            "url": $scope.up.partners[k].url,
-                            "tempo": $scope.up.partners[k].tempo,
-                            "modelsliderIdmodel": $scope.insert.idmodel
-                        }
-                        Files.create(data, function(retorno) {
-                            console.log('ret ' + JSON.stringify(retorno));
-                        });
-                        $scope.file = '';
+
                     }
-                    location.reload();
-                    
-                    console.log('afff' + JSON.stringify(data));
+
+
+                    imgFor(0, $scope.up.partners);
+
+
+
+
+                    function saveFile(index, data) {
+
+                        console.log(data.length)
+                        Files.create(data[index], function(obj) {
+
+                            console.log('ret ' + JSON.stringify(obj));
+                            if (data.length > 0 && index < data.length - 1) {
+                                index = index + 1;
+                                saveFile(index, data);
+                            }else{
+                               location.reload(); 
+                            }
+
+                        });
+
+
+
+                    }
+
+
+                    /* for (var k in $scope.up.partners) {
+
+                         if ($scope.up.partners[k].arquivo) {
+                             $scope.file = 'files/' + $scope.up.partners[k].arquivo.name;
+                             Upload.upload({
+                                 url: 'http://localhost:4000/upload',
+                                 data: {
+                                     file: $scope.up.partners[k].arquivo
+                                 }
+                             }).then(function(resp) {
+                                 console.log(resp);
+                                 if (resp.data.error_code === 0) {
+
+
+
+                                     //$window.alert('Success ' + resp.config.data.file.name + 'uploaded. Response: ');
+
+
+
+                                 } else {
+                                     $window.alert('Ocorreu um erro inesperado!');
+                                 }
+                             }, function(resp) {
+                                 console.log('Error status: ' + resp.status);
+                                 //$window.alert('Error status: ' + resp.status);
+                             }, function(evt) {
+                                 console.log(evt);
+                             });
+                         }
+                         console.log($scope);
+                         data = {
+                             "idfiles": 0,
+                             "type": $scope.up.partners[k].type,
+                             "content": $scope.file,
+                             "url": $scope.up.partners[k].url,
+                             "tempo": $scope.up.partners[k].tempo,
+                             "modelsliderIdmodel": $scope.insert.idmodel
+                         }
+                         Files.create(data, function(retorno) {
+                             console.log('ret ' + JSON.stringify(retorno));
+                         });
+                         $scope.file = '';
+                     }*/
+                    //  location.reload();
+
 
                 });
 
@@ -142,12 +244,12 @@ angular
                      for (var k =0; k<=$scope.partners.length; k++) {
                         console.log($scope.partners[i].type);
                      }
-                  }*/
+                 }*/
 
             };
 
             $scope.slides = Modelslider.find().$promise.then(function(results) {
-                console.log(results);
+                //console.log(results);
                 $scope.modelos = results;
             });
 

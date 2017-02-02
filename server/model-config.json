@@ -20,5 +20,8 @@
   "Modelslider": {
     "dataSource": "slider",
     "public": true
+  },
+  "User": {
+    "dataSource": "db"
   }
 }
