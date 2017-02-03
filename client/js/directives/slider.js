@@ -79,6 +79,6 @@ angular
 		/* End : For Automatic slideshow*/
 		
     },
-	templateUrl:'templates/templateurl.html'
+	templateUrl:'../../view/slide/templates/templateurl.html'
   }
 });

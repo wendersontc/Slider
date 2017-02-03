@@ -1,4 +1,17 @@
-<header>
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <meta charset="utf-8">
+        <title>
+            Painel de avisos
+        </title>
+        <link href="../../css/output.css" rel="stylesheet">
+        <link href="../../css/custom.css" rel="stylesheet">
+    </head>
+    
+    <body ng-app="app">
+        <header>
             <div class="navbar horizontal-bar">
                 <div class="navbar-inner container">
                     <div class="logo-box">
@@ -6,30 +19,6 @@
                   <span><img src="/view/slide/files/transire.png" alt=""></span>
                 </a>
                     </div>
-                    <div class="col-xs-12">
-                                <div class="row">
-                                    <div class="col-md-2">
-                                    </div>
-                                    <div class="col-md-2">
-                                    </div>
-                                    <div class="col-md-2">
-                                    </div>
-                                    <div class="col-md-2">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <h2 ng-show="$root.usuarioLogado != null">Seja bem vindo {{$root.usuarioLogado.username}}</h2>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <a style="margin-top: -40px;" class="btn btn-tef-green-not-bg pull-left m-r-sm ng-binding"
-                                            ng-click="logout()">Logout</a>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
                 </div>
             </div>
             <div class="page-footer-footer page-sidebar sidebar sidebar-admin horizontal-bar">
@@ -44,7 +33,7 @@
                     </ul>
                 </div>
             </div>
-<form ng-controller="ModelSliderController as up" name="up.upload_form">
+            <form ng-controller="ModelSliderController as up" name="up.upload_form">
                 <div id="main-wrapper" class="container">
                     <div class="panel panel-default">
                         <div class="panel-body">
@@ -207,3 +196,21 @@
                         <!--<center><button class="btn btn-tef-green-not-bg m-r-sm ng-binding" ng-click="selectInput(modelo)">Cadastrar</button></center> -->
                     </div>
             </form>
+            <script src="../../vendor/angular.js">
+            </script>
+            <script src="../../vendor/angular-resource.js">
+            </script>
+            <script src="../../vendor/angular-ui-router.js">
+            </script>
+            <script src="../../js/app.js">
+            </script>
+            <script src="../../js/services/lb-services.js">
+            </script>
+            <script src="../../js/controllers/modelslider.js">
+            </script>
+            <script type="text/javascript" src="../../vendor/angular/angular.min.js"></script>
+            <script type="text/javascript" src="../../vendor/ng-file-upload/dist/ng-file-upload.min.js"></script>
+            <script type="text/javascript" src="../../vendor/ng-file-upload/dist/ng-file-upload-shim.min.js"></script>
+    </body>
+
+</html>

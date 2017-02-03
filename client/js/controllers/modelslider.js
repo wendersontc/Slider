@@ -1,7 +1,9 @@
 angular
     .module('app')
-    .controller('ModelSliderController', ['$scope', 'Modelslider', 'Files', '$location', 'Upload', '$window',
-        function($scope, Modelslider, Files, $location, Upload, $window) {
+    .controller('ModelSliderController', ['$scope', 'Modelslider', 'Files', 
+        '$location', 'Upload', '$window', '$state' ,
+        function($scope, Modelslider, Files, $location, Upload, $window,$state) {
+            $scope.state = $state;
             $scope.file = '';
             $scope.modelo = {};
             $scope.form = {};
@@ -59,7 +61,7 @@ angular
                 //alert(mo.name);
                 if (mo.name > 0) {
                     localStorage.setItem('idmodel', mo.name);
-                    window.location.href = "/view/slide/";
+                    window.location.href = "#/slide";
                 }
             };
 
@@ -81,7 +83,7 @@ angular
                         if (data[index].arquivo) {
                             //$scope.file = 'files/' + data[index].arquivo.name;
                             Upload.upload({
-                                url: 'http://192.168.100.6:4000/upload',
+                                url: 'http://localhost:4000/upload',
                                 data: {
                                     file: data[index].arquivo
                                 }

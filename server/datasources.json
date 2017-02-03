@@ -8,9 +8,5 @@
     "name": "slider",
     "user": "root",
     "connector": "mysql"
-  },
-  "db": {
-    "name": "db",
-    "connector": "memory"
   }
 }

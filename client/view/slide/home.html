@@ -1,0 +1,90 @@
+<header>
+            <div class="navbar horizontal-bar">
+                <div class="navbar-inner container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="logo-box">
+                                <a id="hrefDashboard" href="/" class="logo-text">
+                <span><img src="/view/slide/files/transire.png" alt=""></span>
+              </a>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                    </div>
+                                    <div class="col-md-2">
+                                    </div>
+                                    <div class="col-md-2">
+                                    </div>
+                                    <div class="col-md-2">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <a style="margin-top: -40px;" class="btn btn-tef-green-not-bg pull-left m-r-sm ng-binding"
+                                            href="#/login">Login</a>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="page-footer-footer page-sidebar sidebar sidebar-admin horizontal-bar">
+                <div class="page-sidebar-inner">
+                    <ul class="menu accordion-menu bg-green">
+                        <li class="droplink">
+                            <center>
+                                <h1>
+                                    Modelos
+                                </h1>
+                            </center>
+                    </ul>
+                </div>
+            </div>
+<form ng-controller="ModelSliderController">
+                <div id="main-wrapper" class="container">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <table id="" class="table table-bordered table-striped">
+                                        <tbody>
+                                            <tr class="bg-light">
+                                                <th class="col-md-1 text-center">
+                                                </th>
+                                                <th class="col-xs-2 text-center">
+                                                    Modelo
+                                                </th>
+                                            </tr>
+                                            <tr ng-repeat="m in modelos" data-id="{{m.idmodel}}">
+                                                <td class="text-center">
+                                                    <strong>
+                                                        <input type="radio" id="{{m.idmodel}}" ng-model='modelo.name' ng-value="{{m.idmodel}}"
+                                                        name="modelo">
+                                                        {{ m.idmodel }}
+                                                    </strong>
+                                                </td>
+                                                <td class="text-center">
+                                                    {{ m.nameSlider }}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <center>
+                        <button class="btn btn-tef-green-not-bg m-r-sm ng-binding" ng-click="selectInput(modelo)">
+                            Apresentar na tv
+                        </button>
+                    </center>
+                </div>
+</form>
