@@ -1,6 +1,6 @@
 angular
 .module('app')
-.service('usuariosService', function ($rootScope, $location) {
+.service('usuariosService', function ($rootScope, $location, $cookieStore) {
 
     this.validaLogin = function(user){
         var usuarios = [{username:'Robson', password:'123', admin:true},
@@ -13,8 +13,8 @@ angular
                 value.password == user.password){
                 delete value.password;
                 $rootScope.usuarioLogado = value;
+                $cookieStore.put('user', value);
                 $location.path('/new')
-                console.log('logou');
             }
         })
     }

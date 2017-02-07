@@ -4,8 +4,8 @@
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="logo-box">
-                                <a id="hrefDashboard" href="/" class="logo-text">
-                <span><img src="/view/slide/files/transire.png" alt=""></span>
+                                <a id="hrefDashboard" href="#/home" class="logo-text">
+                <span><img src="/images/transire.png" alt=""></span>
               </a>
                             </div>
                             <div class="col-xs-12">
@@ -18,17 +18,29 @@
                                     </div>
                                     <div class="col-md-2">
                                     </div>
-                                    <div class="col-md-2">
+                                    <div ng-show="login == null" class="col-md-2">
+                                    </div>
+                                    <div ng-show="login != null" class="col-md-2">
                                         <div class="form-group">
+                                           <a style="margin-top: -40px;" class="btn btn-tef-green-not-bg pull-left m-r-sm ng-binding"
+                                            href="#/new">Novo</a>
                                         </div>
                                     </div>
-                                    <div class="col-md-2">
+                                    
+                                    <div ng-show="login == null" class="col-md-2">
                                         <div class="form-group">
                                             <a style="margin-top: -40px;" class="btn btn-tef-green-not-bg pull-left m-r-sm ng-binding"
                                             href="#/login">Login</a>
-                                        </div>
-                                        
+                                        </div> 
                                     </div>
+                                    
+                                    <div ng-show="login != null" class="col-md-2">
+                                        <div class="form-group">
+                                            <a style="margin-top: -40px;" class="btn btn-tef-green-not-bg pull-left m-r-sm ng-binding"
+                                            ng-click="logout()">Logout</a>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -57,13 +69,16 @@
                                     <table id="" class="table table-bordered table-striped">
                                         <tbody>
                                             <tr class="bg-light">
-                                                <th class="col-md-1 text-center">
+                                                <th class="col-md-2 text-center">
                                                 </th>
-                                                <th class="col-xs-2 text-center">
+                                                <th class="col-xs-8 text-center">
                                                     Modelo
                                                 </th>
+                                                 <th class="col-xs-2 text-center">
+                                                    Opcoes
+                                                </th>
                                             </tr>
-                                            <tr ng-repeat="m in modelos" data-id="{{m.idmodel}}">
+                                            <tr dir-paginate="m in modelos|filter:procurar|orderBy:sortKey:reverse|itemsPerPage:10" data-id="{{m.idmodel}}">
                                                 <td class="text-center">
                                                     <strong>
                                                         <input type="radio" id="{{m.idmodel}}" ng-model='modelo.name' ng-value="{{m.idmodel}}"
@@ -74,9 +89,15 @@
                                                 <td class="text-center">
                                                     {{ m.nameSlider }}
                                                 </td>
+                                                <td class="text-center">
+                                                 <a href="#/edit/{{m.idmodel}}" title="Editar">
+                                                    Editar
+                                                </a>
+                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>
+                                    <center><dir-pagination-controls max-size="10" boundary-links="true"></dir-pagination-controls></center>
                                 </div>
                             </div>
                         </div>

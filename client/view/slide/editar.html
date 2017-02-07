@@ -38,13 +38,13 @@
                         <li class="droplink">
                             <center>
                                 <h1>
-                                    Cadastro
+                                    Edição
                                 </h1>
                             </center>
                     </ul>
                 </div>
             </div>
-<form ng-controller="ModelSliderController as up" name="up.upload_form">
+<form>
                 <div id="main-wrapper" class="container">
                     <div class="panel panel-default">
                         <div class="panel-body">
@@ -63,16 +63,9 @@
                                                         *
                                                     </span>
                                                 </label>
-                                                <input type="text" class="form-control" ng-model="form.name" name="NameModel0"
+                                                <input type="text" class="form-control" ng-model="name" name="NameModel0"
                                                 id="NameModel0" required placeholder="Modelo">
-                                                <div ng-show="formComp.$submitted || formComp.NameModel0.$touched" class="help-block text-danger">
-                                                    <span ng-show="formComp.NameModel0.$error.required">
-                                                        ERRO
-                                                    </span>
-                                                    <span ng-show="formComp.NameModel0.$error.pattern">
-                                                        ERRO 2
-                                                    </span>
-                                                </div>
+                                                
                                             </div>
                                         </div>
                                         <div class="col-lg-12" ng-repeat="partner in partners" data-part-row="{{partner.count}}"
@@ -85,7 +78,7 @@
                                                             *
                                                         </span>
                                                     </label>
-                                                    <select class="form-control" ng-model="up.partners[partner.count].type" name="teltype0"
+                                                    <select class="form-control" ng-model="partners[partner.count].type" name="teltype0"
                                                     id="teltype0" ng-change="clearPhone(0)" required ng-options="xx.value as xx.name for xx in filesTypes">
                                                         <option value="">
                                                             Tipo
@@ -98,7 +91,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div ng-show="up.partners[partner.count].type == 2" class="col-md-4">
+                                            <div ng-show="partners[partner.count].type == 2" class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="agency">
                                                         URL
@@ -106,7 +99,7 @@
                                                             *
                                                         </span>
                                                     </label>
-                                                    <input type="text" class="form-control" ng-model="up.partners[partner.count].url"
+                                                    <input type="text" class="form-control" ng-model="partners[partner.count].url"
                                                     name="EndModel0" id="EndModel0" required placeholder="URL">
                                                     <div ng-show="formComp.$submitted || formComp.EndModel0.$touched" class="help-block text-danger">
                                                         <span ng-show="formComp.EndModel0.$error.required">
@@ -118,7 +111,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div ng-show="up.partners[partner.count].type == 1" class="col-md-4">
+                                            <div ng-show="partners[partner.count].type == 1" class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="agency">
                                                         FILE
@@ -129,7 +122,7 @@
                                                     <input 
                                                     type="file" 
                                                     ngf-select 
-                                                    ng-model="up.partners[partner.count].arquivo" 
+                                                    ng-model="partners[partner.count].arquivo" 
                                                     name="file" 
                                                     ngf-pattern="'image/*'"
                                                     accept="image/*" 
@@ -147,7 +140,7 @@
                                                             *
                                                         </span>
                                                     </label>
-                                                    <input type="text" class="form-control phone" required ng-model="up.partners[partner.count].tempo"
+                                                    <input type="text" class="form-control phone" required ng-model="partners[partner.count].tempo"
                                                     name="phoneNumber0" id="phoneNumber0" autocomplete="off" placeholder="Tempo">
                                                     <div ng-show="formComp.$submitted || formComp.phoneNumber0.$touched" class="help-block text-danger">
                                                         <span ng-show="formComp.phoneNumber0.$error.required">
@@ -159,7 +152,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-2" ng-if="partner.count > 0" style="margin-top:25px">
+                                            <div class="col-md-2" style="margin-top:25px">
                                                 <button class="btn btn-primary" title="Remover" type="button" ng-click="removePartners(partner.count)">
                                                     <i class="fa fa-close">
                                                     </i>
@@ -185,13 +178,13 @@
                                                 Cancelar
                                             </button> -->
                                             <a class="btn btn-tef-green-not-bg pull-left m-r-sm ng-binding"
-                                            href="/">Cancelar</a>
+                                            href="#/home">Cancelar</a>
                                         </div>
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                            <button  type="submit" class="btn btn-tef-green-not-bg m-r-sm" ng-click="save()">
-                                                Cadastrar
+                                            <button  type="submit" class="btn btn-tef-green-not-bg m-r-sm" ng-click="saveEdit()">
+                                                Editar
                                             </button>
                                         </div>
                                     </div>

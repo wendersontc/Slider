@@ -3,9 +3,17 @@ angular
     'ui.router',
     'lbServices',
     'ngResource',
-    'ngFileUpload'
-  ]).config(['$stateProvider', '$urlRouterProvider', function($stateProvider,
-      $urlRouterProvider) {
+    'ngFileUpload',
+    'ngCookies',
+    'ngIdle',
+    'angularUtils.directives.dirPagination'
+  ]).config(['$stateProvider', '$urlRouterProvider', 'IdleProvider', 
+  'KeepaliveProvider', function($stateProvider,
+      $urlRouterProvider, IdleProvider, KeepaliveProvider) {
+    
+    IdleProvider.idle(1*60); // 10 minutes idle
+    IdleProvider.timeout(30); // after 30 seconds idle, time the user out
+    KeepaliveProvider.interval(1*60)
     
     $urlRouterProvider.otherwise('/home');
 
@@ -36,23 +44,30 @@ angular
         controller: 'loginController'
       })
       .state('acessoNegado', {
-        url: '/acessoNegado',
+        url: '/error',
         templateUrl: '../view/slide/erro.html',
-        controller: 'SliderController'
+        controller: ''
+      })
+      .state('edit', {
+         url : '/edit/:id',
+         templateUrl : '../view/slide/editar.html',
+         controller : 'ModelSliderEditController'
       })
   }])
-  .run(function ($rootScope, $location) {
+  .run(function ($rootScope, $location , $cookieStore) {
     var rotasBloqueadasUsuariosNaoLogados = ['/new', '/livros'];
     var rotasBloqueadasUsuariosComuns = ['/usuarios'];
     $rootScope.$on('$locationChangeStart', function () {
-       
-        if($rootScope.usuarioLogado == null && rotasBloqueadasUsuariosNaoLogados.indexOf($location.path()) != -1){
-            $location.path('/acessoNegado');
+        
+        $rootScope.login = $cookieStore.get('user');
+        //if($rootScope.usuarioLogado == null && rotasBloqueadasUsuariosNaoLogados.indexOf($location.path()) != -1){
+        if($cookieStore.get('user') == null && rotasBloqueadasUsuariosNaoLogados.indexOf($location.path()) != -1) { 
+            $location.path('/error');
         }else
-        if($rootScope.usuarioLogado != null &&
+        if($cookieStore.get('user') == null != null &&
             rotasBloqueadasUsuariosComuns.indexOf($location.path()) != -1 &&
             $rootScope.usuarioLogado.admin == false){
-            $location.path('/acessoNegado')
+            $location.path('/error')
         }
     });
 });    
