@@ -3,9 +3,10 @@ angular
 .service('usuariosService', function ($rootScope, $location, $cookieStore) {
 
     this.validaLogin = function(user){
-        var usuarios = [{username:'Robson', password:'123', admin:true},
-            {username:'Juliano', password:'123', admin:false},
-            {username:'Bruno', password:'123', admin:false}
+        var usuarios = [{username:'Robson', password:'123', admin:false},
+            {username:'admin', password:'123', admin:true},
+            {username:'Admin', password:'123', admin:true},
+            {username: 'Wenderson', password: '123', admin: false}
         ]
 
         angular.forEach(usuarios, function(value, index){
@@ -14,7 +15,7 @@ angular
                 delete value.password;
                 $rootScope.usuarioLogado = value;
                 $cookieStore.put('user', value);
-                $location.path('/new')
+                $location.path('/home')
             }
         })
     }

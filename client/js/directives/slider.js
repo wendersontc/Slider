@@ -19,6 +19,8 @@ angular
     	
     });   
 
+    console.log($scope.slides);
+
 }])
 .directive('slider', function ($timeout) {
   return {
@@ -44,8 +46,8 @@ angular
 			scope.images.forEach(function(image){
 				image.visible=false;
 			});
-			console.log(scope.images[scope.currentIndex]);
-			console.log(scope.images[scope.currentIndex].tempo);
+			//console.log(scope.images[scope.currentIndex]);
+			//console.log(scope.images[scope.currentIndex].tempo);
 			
 			scope.time = (scope.images[scope.currentIndex].tempo * 1000);
 

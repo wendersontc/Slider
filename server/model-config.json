@@ -20,5 +20,13 @@
   "Modelslider": {
     "dataSource": "slider",
     "public": true
+  },
+  "Appoint": {
+    "dataSource": "slider",
+    "public": true
+  },
+  "TimeAppoint": {
+    "dataSource": "slider",
+    "public": true
   }
 }

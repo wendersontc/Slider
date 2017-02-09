@@ -8,11 +8,69 @@
         </title>
         <link href="css/output.css" rel="stylesheet">
         <link href="css/custom.css" rel="stylesheet">
-        <link href='css/app.css' rel='stylesheet' type='text/css'>
-
+        <!--<link href='css/app.css' rel='stylesheet' type='text/css'> -->
+        
     </head>
     
     <body ng-app="app">
+    
+    <header>
+            <div ng-show="!slide" class="navbar horizontal-bar">
+                <div class="navbar-inner container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="logo-box">
+                                <a id="hrefDashboard" href="#/home" class="logo-text">
+                <span><img src="/images/transire.png" alt=""></span>
+              </a>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                    </div>
+                                    <div class="col-md-2">
+                                    </div>
+                                    <div class="col-md-2">
+                                    </div>
+                                    <div ng-show="login == null" class="col-md-2">
+                                    </div>
+                                    <div ng-show="login == null" class="col-md-2">
+                                    </div>
+                                    <div ng-show="login != null" class="col-md-2">
+                                        <div class="form-group">
+                                           <a style="margin-top: -40px;" class="btn btn-tef-green-not-bg pull-left m-r-sm ng-binding"
+                                            href="#/new_appoint">Nova Agenda</a>
+                                        </div>
+                                    </div>
+
+                                    <div ng-show="login != null" class="col-md-2">
+                                        <div class="form-group">
+                                           <a style="margin-top: -40px;" class="btn btn-tef-green-not-bg pull-left m-r-sm ng-binding"
+                                            href="#/new">Novo Modelo</a>
+                                        </div>
+                                    </div>
+                                    
+                                    <div ng-show="login == null" class="col-md-2">
+                                        <div class="form-group">
+                                            <a style="margin-top: -40px;" class="btn btn-tef-green-not-bg pull-left m-r-sm ng-binding"
+                                            href="#/login">Login</a>
+                                        </div> 
+                                    </div>
+                                    
+                                    <div ng-show="login != null" class="col-md-2">
+                                        <div class="form-group">
+                                            <a style="margin-top: -40px;" class="btn btn-tef-green-not-bg pull-left m-r-sm ng-binding"
+                                            ng-click="logout()">Logout</a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
        <!-- <header>
             <div class="navbar horizontal-bar">
                 <div class="navbar-inner container">
@@ -100,17 +158,24 @@
             <!-- controllers -->
             <script src="js/controllers/modelslider.js"></script>
             <script src="js/controllers/login.js"></script>
+            <script src="js/controllers/agenda.js"></script>
             
             <!-- directives -->
             <script src="js/directives/slider.js"></script>
+
+            <!-- factory -->
+            <script src="js/factory/position.js"></script>
             
             <script type="text/javascript" src="vendor/ng-file-upload/dist/ng-file-upload.min.js">
             </script>
-            <script type="text/javascript" src="vendor/ng-file-upload/dist/ng-file-upload-shim.min.js">
-            </script>
+            <script type="text/javascript" src="vendor/ng-file-upload/dist/ng-file-upload-shim.min.js"></script>
             <script src="http://code.angularjs.org/1.0.0rc10/angular-cookies-1.0.0rc10.js"></script>
             <script src="vendor/angular-idle-min.js"></script>
             <script src="vendor/dirPagination.js"></script>
+
+            <script src="vendor/timerpicker/timerpicker-tpl.js"></script>
+            <script src="vendor/timerpicker/timerpicker.js"></script>
+            
     </body>
 
 </html>

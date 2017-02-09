@@ -10,8 +10,7 @@ angular
           }
         }
     };*/
-
-
+    
     $scope.slides = Files.find( {"filter": {"where": {"modelsliderIdmodel": localStorage.getItem('idmodel')}}}).$promise.then(function(results) {
     	console.log(results);
     	$scope.teste1 = JSON.stringify(results);

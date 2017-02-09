@@ -6,7 +6,10 @@ angular
     'ngFileUpload',
     'ngCookies',
     'ngIdle',
-    'angularUtils.directives.dirPagination'
+    'angularUtils.directives.dirPagination',
+    'sy.bootstrap.timepicker',
+    'template/syTimepicker/timepicker.html',
+    'template/syTimepicker/popup.html'
   ]).config(['$stateProvider', '$urlRouterProvider', 'IdleProvider', 
   'KeepaliveProvider', function($stateProvider,
       $urlRouterProvider, IdleProvider, KeepaliveProvider) {
@@ -45,7 +48,7 @@ angular
       })
       .state('acessoNegado', {
         url: '/error',
-        templateUrl: '../view/slide/erro.html',
+        templateUrl: '../view/erro.html',
         controller: ''
       })
       .state('edit', {
@@ -53,12 +56,23 @@ angular
          templateUrl : '../view/slide/editar.html',
          controller : 'ModelSliderEditController'
       })
+      .state('agendamentos', {
+         url : '/new_appoint',
+         templateUrl : '../view/agenda/novo.html',
+         controller : 'NewAgendaController'
+      })
+      .state('editagendamentos', {
+         url : '/edit_appoint/:id',
+         templateUrl : '../view/agenda/editar.html',
+         controller : 'EditAgendaController'
+      })
   }])
-  .run(function ($rootScope, $location , $cookieStore) {
-    var rotasBloqueadasUsuariosNaoLogados = ['/new', '/livros'];
-    var rotasBloqueadasUsuariosComuns = ['/usuarios'];
+  .run(function ($rootScope, $location , $cookieStore, $timeout) {
+    var rotasBloqueadasUsuariosNaoLogados = ['/new', '/edit'];
+    var rotasBloqueadasUsuariosComuns = ['/agendamento'];
     $rootScope.$on('$locationChangeStart', function () {
         
+        if($location.path() == '/slide') {$rootScope.slide = true} else {$rootScope.slide = false}
         $rootScope.login = $cookieStore.get('user');
         //if($rootScope.usuarioLogado == null && rotasBloqueadasUsuariosNaoLogados.indexOf($location.path()) != -1){
         if($cookieStore.get('user') == null && rotasBloqueadasUsuariosNaoLogados.indexOf($location.path()) != -1) { 
@@ -70,4 +84,34 @@ angular
             $location.path('/error')
         }
     });
+
+    $rootScope.logout = function(){
+       $cookieStore.put('user', null);
+       $location.path('/login');
+    };
+    
+    $rootScope.currentIndex=0;
+    $rootScope.time = 0;
+    
+    $rootScope.next=function(){
+      console.log(new Date());
+      $rootScope.currentIndex++;
+    };
+
+    $rootScope.$watch('currentIndex',function(){
+
+      $rootScope.time = (60 * 1000);
+
+           timer=$timeout(function(){
+            $rootScope.next();
+
+          },$rootScope.time);
+
+           console.log('apenas teste');
+           $rootScope.$on('$destroy',function(){
+            $timeout.cancel(timer);
+          });
+           //scope.images[scope.currentIndex].visible=true;
+         });
+
 });    

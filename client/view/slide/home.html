@@ -1,71 +1,37 @@
-<header>
-            <div class="navbar horizontal-bar">
-                <div class="navbar-inner container">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="logo-box">
-                                <a id="hrefDashboard" href="#/home" class="logo-text">
-                <span><img src="/images/transire.png" alt=""></span>
-              </a>
-                            </div>
-                            <div class="col-xs-12">
-                                <div class="row">
-                                    <div class="col-md-2">
-                                    </div>
-                                    <div class="col-md-2">
-                                    </div>
-                                    <div class="col-md-2">
-                                    </div>
-                                    <div class="col-md-2">
-                                    </div>
-                                    <div ng-show="login == null" class="col-md-2">
-                                    </div>
-                                    <div ng-show="login != null" class="col-md-2">
-                                        <div class="form-group">
-                                           <a style="margin-top: -40px;" class="btn btn-tef-green-not-bg pull-left m-r-sm ng-binding"
-                                            href="#/new">Novo</a>
-                                        </div>
-                                    </div>
-                                    
-                                    <div ng-show="login == null" class="col-md-2">
-                                        <div class="form-group">
-                                            <a style="margin-top: -40px;" class="btn btn-tef-green-not-bg pull-left m-r-sm ng-binding"
-                                            href="#/login">Login</a>
-                                        </div> 
-                                    </div>
-                                    
-                                    <div ng-show="login != null" class="col-md-2">
-                                        <div class="form-group">
-                                            <a style="margin-top: -40px;" class="btn btn-tef-green-not-bg pull-left m-r-sm ng-binding"
-                                            ng-click="logout()">Logout</a>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            </div>
             <div class="page-footer-footer page-sidebar sidebar sidebar-admin horizontal-bar">
                 <div class="page-sidebar-inner">
                     <ul class="menu accordion-menu bg-green">
                         <li class="droplink">
                             <center>
                                 <h1>
-                                    Modelos
+                                    Home
                                 </h1>
                             </center>
-                    </ul>
-                </div>
+                        </ul>
+                    </div>
             </div>
-<form ng-controller="ModelSliderController">
-                <div id="main-wrapper" class="container">
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-xs-12">
+<div id="main-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel-body panel-white">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" role="tablist" ng-init="tab = 1">
+                            
+                            <li role="presentation" ng-class="[{'active': tab == 1}]">
+                                <a ng-click="tab = 1" aria-controls="home" role="tab">MODELOS</a>
+                            </li>
+                           
+                            <li role="presentation" ng-class="{'active' : tab == 2}" class=" tabis">
+                                <a ng-click="tab = 2" aria-controls="profile" role="tab">AGENDAMENTOS</a>
+                            </li>
+                            
+                        </ul>
+                        <div class="tab-content">
+                            <div role="tabpanel" ng-class="{'active' : tab == 1}" ng-show="tab == 1">
+                               <form ng-controller="ModelSliderController">
+                
                                     <table id="" class="table table-bordered table-striped">
                                         <tbody>
                                             <tr class="bg-light">
@@ -78,7 +44,7 @@
                                                     Opcoes
                                                 </th>
                                             </tr>
-                                            <tr dir-paginate="m in modelos|filter:procurar|orderBy:sortKey:reverse|itemsPerPage:10" data-id="{{m.idmodel}}">
+                                            <tr dir-paginate="m in modelos|filter:procurar|orderBy:sortKey:reverse|itemsPerPage:2" data-id="{{m.idmodel}}">
                                                 <td class="text-center">
                                                     <strong>
                                                         <input type="radio" id="{{m.idmodel}}" ng-model='modelo.name' ng-value="{{m.idmodel}}"
@@ -90,22 +56,77 @@
                                                     {{ m.nameSlider }}
                                                 </td>
                                                 <td class="text-center">
-                                                 <a href="#/edit/{{m.idmodel}}" title="Editar">
-                                                    Editar
-                                                </a>
+                                                    
+                                                    <a class="glyphicon glyphicon-edit" href="#/edit/{{m.idmodel}}" title="Editar" style="font-size: 20px;">
+                                                        
+                                                    </a>
+                                                    &nbsp
+                                                    <a class="fa fa-close" href="" title="Excluir" style="font-size: 24px;">
+                                                        
+                                                    </a>
+                                                
+                                                 
                                                 </td>
+
                                             </tr>
                                         </tbody>
                                     </table>
-                                    <center><dir-pagination-controls max-size="10" boundary-links="true"></dir-pagination-controls></center>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                                    <center ng-view="modelos.length > 1"><dir-pagination-controls max-size="4" boundary-links="true"></dir-pagination-controls></center>
+                                
                     <center>
                         <button class="btn btn-tef-green-not-bg m-r-sm ng-binding" ng-click="selectInput(modelo)">
                             Apresentar na tv
                         </button>
                     </center>
-                </div>
+               
 </form>
+                            </div>
+                            <div role="tabpanel" ng-class="{'active' : tab == 2}" ng-show="tab == 2">
+                                <form ng-controller="AgendaController" >
+                                    <table id="" class="table table-bordered table-striped">
+                                        <tbody>
+                                            <tr class="bg-light">
+                                                <th class="col-md-2 text-center">
+                                                    Código
+                                                </th>
+                                                <th class="col-xs-8 text-center">
+                                                    Nome Agendamento
+                                                </th>
+                                                <th class="col-xs-2 text-center">
+                                                    Opcoes
+                                                </th>
+                                            </tr>
+                                            <tr dir-paginate="ag in agendas|filter:procurar|orderBy:sortKey:reverse|itemsPerPage:4" data-id="{{ag.idappoint}}">
+                                                <td class="text-center">
+                                                        {{ ag.idappoint }}
+                                                </td>
+                                                <td class="text-center">
+                                                    {{ ag.name }}
+                                                </td>
+                                                <td class="text-center">
+                                                    
+                                                    <a class="glyphicon glyphicon-edit" href="#/edit_appoint/{{ag.idappoint}}" title="Editar" style="font-size: 20px;">
+                                                        
+                                                    </a>
+                                                    &nbsp
+                                                    <a class="fa fa-close" href="" title="Excluir" style="font-size: 24px;">
+                                                        
+                                                    </a>
+                                                
+                                                 
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <center><dir-pagination-controls max-size="4" boundary-links="true"></dir-pagination-controls></center>
+                                </form>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>            

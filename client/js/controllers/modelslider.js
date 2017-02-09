@@ -1,13 +1,14 @@
 angular
     .module('app')
     .controller('ModelSliderController', ['$scope', 'Modelslider', 'Files', 
-        '$location', 'Upload', '$window', '$state' , '$cookieStore',
-        function($scope, Modelslider, Files, $location, Upload, $window,$state,$cookieStore) {
+        '$location', 'Upload', '$window', '$state' , '$cookieStore', 'Appoint' ,
+        function($scope, Modelslider, Files, $location, Upload, $window,$state,$cookieStore,Appoint) {
             $scope.state = $state;
             $scope.file = '';
             $scope.modelo = {};
             $scope.form = {};
             $scope.insert = {};
+            
             $scope.filesTypes = [{
                 value: 1,
                 name: "Imagem"
@@ -15,7 +16,7 @@ angular
                 value: 2,
                 name: "Url"
             }];
-
+            
             /*var data = {
               category: $scope.form.category,
               plan: $scope.plan,
@@ -88,7 +89,8 @@ angular
                         if (data[index].arquivo) {
                             //$scope.file = 'files/' + data[index].arquivo.name;
                             Upload.upload({
-                                url: 'http://localhost:4000/upload',
+                                //url: 'http://localhost:4000/upload',
+                                url : $location.absUrl().split('#')[0] + 'upload',
                                 data: {
                                     file: data[index].arquivo
                                 }
@@ -316,7 +318,8 @@ angular
                 console.log(data[index]);
                 if (data[index].arquivo && data[index].partnerId == 0) {
                             Upload.upload({
-                                url: 'http://localhost:4000/upload',
+                                //url: 'http://localhost:4000/upload',
+                                url : $location.absUrl().split('#')[0] + 'upload',
                                 data: {
                                     file: data[index].arquivo
                                 }

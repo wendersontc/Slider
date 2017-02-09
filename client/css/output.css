@@ -745,7 +745,8 @@ body {
     font-family: 'Glyphicons Halflings';
     font-weight: 400;
     line-height: 1;
-    -webkit-font-smoothing: antialiased
+    -webkit-font-smoothing: antialiased;
+    color: green;
 }
 .glyphicon-asterisk:before {
     content: "\2a"
@@ -6634,7 +6635,8 @@ button.close {
     font-size: inherit;
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
-    transform: translate(0, 0)
+    transform: translate(0, 0);
+    color: green;
 }
 .cd-title>*,
 [data-icon]:before {
@@ -13761,8 +13763,8 @@ fieldset[disabled] .btn-danger:hover {
 }
 .nav-tabs>li>a {
     border-radius: 0!important;
-    color: #777;
-    border-bottom: 1px solid #DDD
+    color: #367A47;
+    border-bottom: 4px solid #367A47
 }
 .nav-tabs>li>a:hover {
     background: #f1f1f1

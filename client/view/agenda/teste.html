@@ -1,0 +1,65 @@
+<html lang="en" >
+   <head>
+      <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+	  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+      <script language="javascript">
+         angular
+            .module('firstApplication', ['ngMaterial'])
+            .controller('progressbarsController', progressbarsController);
+
+         function progressbarsController ($scope, $interval) {
+            var self = this,  j= 0, counter = 0;
+            self.modes = [ ];
+            self.activated = true;
+            self.determinateValue = 0;
+            self.toggleActivation = function() {
+               if ( !self.activated ) self.modes = [ ];
+               if (  self.activated ) j = counter = 0;
+            };
+            
+            $interval(function() {
+               self.determinateValue += 2;
+               
+               if ( (j < 5) && !self.modes[j] && self.activated ) {
+                  self.modes[j] = 'indeterminate';
+               }
+               if ( counter++ % 4 == 0 ) j++;
+            }, 100, 0, true);
+         }
+                          
+      </script>      
+   </head>
+   <body ng-app="firstApplication"> 
+      <div id="progressbarsContainer" ng-controller="progressbarsController as ctrl" layout="column" ng-cloak>
+         <h4 style="margin-top:10px">Determinate </h4><p></p>
+         <div layout="row" layout-sm="column" layout-align="space-around">
+            <md-progress-linear md-mode="determinate" value="{{ctrl.determinateValue}}"></md-progress-circular>
+         </div>
+         <h4 style="margin-top:10px">Indeterminate </h4>
+         <div layout="row" layout-sm="column" layout-align="space-around">
+            <md-progress-linear md-mode="indeterminate"></md-progress-circular>
+         </div>
+         <h4 style="margin-top:10px">Buffer</h4>
+         <div layout="row" layout-sm="column" layout-align="space-around">
+            <md-progress-linear class="md-warn" md-mode="{{ctrl.modes[0]}}" value="{{ctrl.determinateValue}}"
+                      md-buffer-value="{{ctrl.determinateValue2}}" ></md-progress-linear>
+         </div>
+         <hr ng-class="{'visible' : ctrl.activated}">
+         <div id="loaders" layout="row" layout-align="start center">
+            <p>Progress Buffer Indicators:    </p>
+            <h5>Off</h5>
+            <md-switch
+               ng-model="ctrl.activated"
+               ng-change="ctrl.toggleActivation()"
+               aria-label="Toggle Buffer Progress Indicators">
+               <h5>On</h5>
+            </md-switch>
+         </div>
+	  </div>
+   </body>
+</html>
